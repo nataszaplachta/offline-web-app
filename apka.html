@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <style>
+        #tabela1{
+            width:100%;
+            background-color:lightpink;
+            font-size:20px;
+        }
+        #formularz{
+            background-color:lightblue;
+            font-size:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tabela">
+        <table id="tabela1">
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Imię </th>
+            <th>Kolor</th>
+            <th>Typ</th>
+        </tr>
+
+        </table>
+        </div>
+    <div id="formularz">
+            Imię:<input type="text" id="name"> 
+            Kolor:<input type="text" id="color">
+            Typ:<select id="type">
+                <option id="panda" value="Panda">Panda</option>
+                <option id="panda" value="Pies">Pies</option>
+                <option id="kot" value="Kot">Kot</option>    
+                </select>
+        <button id="confirmbutton">Dodaj</button>
+    </div>
+
+
+    
+    <script>
+        var animalsArray=new Array();
+        class zwierze{
+            constructor(imiee,kolor,ogon,sound)
+            {this.imiee=imiee;
+            this.kolor=kolor;
+            this.ogon=ogon;
+            this.sound=sound;}
+            ugryź()
+            {
+                console.log("gryzie");
+            }
+            makesound()
+            {
+                console.log(this.sound);
+            }
+        }
+        
+        class cat extends zwierze{
+            constructor(imiee,kolor,ogon,sound)
+            {
+                super(imiee,kolor,ogon);
+                super.makesound();
+            }
+            zamiaucz()
+            {
+                console.log("miau miau");
+            }
+            }
+        class dog extends zwierze{
+            constructor(imiee,kolor,ogon)
+            {
+                super(imiee,kolor,ogon);
+                super.makesound();
+                }
+            zaszczekaj()
+            {
+                console.log("hau hau");
+            }
+            }
+        class lew extends zwierze{
+            constructor(imiee,kolor,ogon)
+            {
+                super(imiee,kolor,ogon);
+                super.makesound();
+            }
+            zarycz()
+            {
+                console.log("roar");
+            }
+          
+            }
+            var cat1=new cat("Puszek","czarny",true);
+            animalsArray.push(cat1);
+            cat1.zamiaucz();
+            var dog1=new dog("Bruno","Rudy",true);
+            animalsArray.push(dog1);
+            dog1.zaszczekaj();
+            var lew1=new lew("Simba","Beżowy",true);
+            lew1.zarycz();
+
+        document.getElementById("confirmbutton").addEventListener("click",function()
+            {
+            var zwierz=
+            {
+            imie:document.getElementById("name").value ,
+            color:document.getElementById("color").value ,
+            typ:document.getElementById("type").value
+            };
+            var x=document.createElement("tr");
+            x.setAttribute("id","myTr");
+            document.getElementById("tabela1").appendChild(x);
+            var y = document.createElement("td");
+            var t = document.createTextNode(zwierz.imie);
+            y.appendChild(t);
+            document.getElementById("tabela1").appendChild(y);
+            var y = document.createElement("td");
+            var t = document.createTextNode(zwierz.color);
+            y.appendChild(t);
+            document.getElementById("tabela1").appendChild(y);
+            var y = document.createElement("td");
+            var t = document.createTextNode(zwierz.typ);
+            y.appendChild(t);
+            document.getElementById("tabela1").appendChild(y);
+            var y = document.createElement("td");
+            var z = document.createElement("button");
+            var b = document.createTextNode("Remove");
+            z.appendChild(b);
+            y.appendChild(z);
+            document.getElementById("tabela1").appendChild(y);
+            z.addEventListener("click",function()
+            {
+
+                document.getElementById("tabela1").deleteRow(-1);
+            });
+            });
+            
+           
+
+
+    </script>
+</body>
+</html>
